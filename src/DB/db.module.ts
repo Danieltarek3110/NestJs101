@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+require("dotenv").config({ path: "./config/dev.env" });
+
+const dburi = process.env.MONGODB_URL;
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/nest101 '),
+    MongooseModule.forRoot(dburi),
   ],
   exports: [MongooseModule],
 })
